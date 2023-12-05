@@ -8,11 +8,22 @@
   ],
   "main": "index.js",
   "scripts": {
+    "client:start": "npm run dev --workspace=who-picks-this-nose-client",
+    "client:lint:check": "npm run lint:check --workspace=who-picks-this-nose-client",
+    "client:lint:fix": "npm run lint:fix --workspace=who-picks-this-nose-client",
+    "server:start": "npm run start --workspace=who-picks-this-nose-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.0",
     "typescript": "^5.3.2"
   }
 }
