@@ -1,0 +1,18 @@
+{
+  "name": "who-picks-this-nose",
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "who-picks-this-nose-client",
+    "who-picks-this-nose-server"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.3.2"
+  }
+}
