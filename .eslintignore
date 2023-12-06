@@ -1,0 +1,5 @@
+**/node_modules
+**/dist
+
+# Generated types from server codegen
+who-picks-this-nose-server/src/types.ts
