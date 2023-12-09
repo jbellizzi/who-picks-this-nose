@@ -9,18 +9,6 @@ export const typeDefs = gql`
     name: String!
   }
 
-  "A nose to display"
-  type Nose {
-    "Nose's ID"
-    id: ID!
-    "ID of person's nose"
-    personId: ID!
-    "URL of the nose image"
-    noseUrl: String!
-    "URL of the face image"
-    faceUrl: String!
-  }
-
   "Image"
   type PersonWithImage {
     "Image ID"

@@ -6,16 +6,23 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "generate": "graphql-codegen",
     "lint:check": "eslint . --ext ts,tsx --report-unused-disable-directives",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "prettier": "prettier",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.8",
+    "@blueprintjs/core": "^5.7.2",
+    "classnames": "^2.3.2",
+    "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",

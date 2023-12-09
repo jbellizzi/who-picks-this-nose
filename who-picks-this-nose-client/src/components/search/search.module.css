@@ -1,0 +1,12 @@
+.searchInput {
+  width: 400px;
+}
+
+.menu {
+  display: none;
+  width: 400px;
+}
+
+.showMenu {
+  display: block;
+}

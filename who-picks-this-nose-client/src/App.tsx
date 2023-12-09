@@ -1,31 +1,50 @@
-import { useState } from "react";
+import { Card, H1, Spinner } from "@blueprintjs/core";
+import classNames from "classnames";
 
-import "./App.css";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import styles from "./App.module.css";
+import { Search } from "./components";
+import { AppContext, useAppContext } from "./context/app-context";
+import { useGetTodaysPerson } from "./hooks";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { todaysPerson, loadingTodaysPerson, errorTodaysPerson } = useGetTodaysPerson();
+
+  const appContext = useAppContext(todaysPerson);
+
+  if (errorTodaysPerson) return <div>Error: {errorTodaysPerson.message}</div>;
+
+  const { guessesContext } = appContext;
+  const { correctGuess } = guessesContext;
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <AppContext.Provider value={appContext}>
+      <div className={styles.App}>
+        <div className={styles.header}>
+          <H1>Who Picks This Nose?</H1>
+          <div className={styles.lastUpdated}>
+            Last Updated: <span className={styles.lastUpdatedBold}>Dec 9, 2023</span>
+          </div>
+        </div>
+        <Card className={styles.imgCard} compact>
+          {loadingTodaysPerson ? (
+            <Spinner className={styles.spinner} />
+          ) : (
+            <>
+              <img
+                className={classNames(styles.img, { [styles.hidden]: correctGuess !== null })}
+                src={todaysPerson?.noseUrl}
+              />
+              <img
+                className={classNames(styles.img, { [styles.hidden]: correctGuess === null })}
+                src={todaysPerson?.faceUrl}
+              />
+            </>
+          )}
+        </Card>
+        <div className={styles.correctGuess}>{correctGuess?.name}</div>
+        <Search />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    </AppContext.Provider>
   );
 }
 

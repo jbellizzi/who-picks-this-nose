@@ -3,3 +3,5 @@
 
 # Generated types from server codegen
 who-picks-this-nose-server/src/types.ts
+
+who-picks-this-nose-client/src/__generated__/*

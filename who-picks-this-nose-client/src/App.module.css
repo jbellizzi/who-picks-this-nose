@@ -1,0 +1,45 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header {
+  margin: 2rem 0;
+}
+
+.lastUpdated {
+  font-style: italic;
+}
+
+.lastUpdatedBold {
+  font-weight: bold;
+}
+
+.imgCard:global(.bp5-card) {
+  width: 400px;
+  height: 400px;
+  background-color: #c5cbd3;
+}
+
+.spinner {
+  height: 100%;
+}
+
+.correctGuess {
+  height: 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #238551;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+img.hidden {
+  display: none;
+}
