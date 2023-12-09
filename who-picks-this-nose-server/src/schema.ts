@@ -22,13 +22,21 @@ export const typeDefs = gql`
   }
 
   "Image"
-  type Image {
-    "Image's ID"
+  type PersonWithImage {
+    "Image ID"
     id: ID!
+    "Name"
+    name: String!
+    "Nose Image URL"
+    noseUrl: String!
+    "Face Image URL"
+    faceUrl: String!
   }
 
   type Query {
     "Get all people"
     people: [Person!]!
+    "Get today's person"
+    todaysPerson: PersonWithImage!
   }
 `;

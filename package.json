@@ -11,6 +11,7 @@
     "client:start": "npm run dev --workspace=who-picks-this-nose-client",
     "client:lint:check": "npm run lint:check --workspace=who-picks-this-nose-client",
     "client:lint:fix": "npm run lint:fix --workspace=who-picks-this-nose-client",
+    "server:dev": "npm run dev --workspace=who-picks-this-nose-server",
     "server:start": "npm run start --workspace=who-picks-this-nose-server",
     "server:generate": "npm run generate --workspace=who-picks-this-nose-server",
     "test": "echo \"Error: no test specified\" && exit 1"

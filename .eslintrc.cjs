@@ -10,5 +10,6 @@ module.exports = {
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
     ],
     "prettier/prettier": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
   },
 };
