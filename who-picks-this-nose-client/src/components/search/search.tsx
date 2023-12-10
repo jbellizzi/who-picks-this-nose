@@ -1,6 +1,6 @@
 import { InputGroup, Intent, Menu, MenuItem } from "@blueprintjs/core";
 import classNames from "classnames";
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import { Person } from "../../__generated__/graphql";
 import { useGetAppContext } from "../../context/app-context";
@@ -12,6 +12,7 @@ interface PersonWithGuess extends Person {
 }
 
 export const Search = () => {
+  const searchRef = useRef<HTMLDivElement>(null);
   const { people, loadingPeople, errorPeople } = useGetPeople();
 
   const [search, setSearch] = useState<string>("");
@@ -22,7 +23,7 @@ export const Search = () => {
   );
 
   const { guessesContext } = useGetAppContext();
-  const { guess, incorrectGuesses } = guessesContext;
+  const { guess, correctGuess, incorrectGuesses } = guessesContext;
 
   const filteredNosesWithGuesses: PersonWithGuess[] = useMemo(
     (): PersonWithGuess[] =>
@@ -37,10 +38,26 @@ export const Search = () => {
     setSearch(e.target.value);
   };
 
+  useEffect(() => {
+    const eventHandler = function (event: MouseEvent) {
+      const closeSearch = event.target !== searchRef.current && !searchRef.current?.contains(event.target as Node);
+      if (closeSearch) setSearch("");
+    };
+    document.addEventListener("click", eventHandler);
+
+    return () => {
+      document.removeEventListener("click", eventHandler);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (correctGuess) setSearch("");
+  }, [correctGuess]);
+
   if (errorPeople) return <div>Error: {errorPeople.message}</div>;
 
   return (
-    <div>
+    <div ref={searchRef}>
       <InputGroup
         disabled={loadingPeople}
         type="search"
