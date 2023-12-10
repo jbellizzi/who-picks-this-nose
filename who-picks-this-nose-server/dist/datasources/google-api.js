@@ -26,7 +26,6 @@ class GoogleAPI {
         return file;
     }
     async getDriveImageUrl(name) {
-        console.log(this.cache);
         const key = `drive-image-${name}`;
         const cacheVal = await this.cache?.get(key);
         if (cacheVal)
