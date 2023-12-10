@@ -8,6 +8,7 @@
   ],
   "main": "index.js",
   "scripts": {
+    "client:build": "npm run build --workspace=who-picks-this-nose-client",
     "client:start": "npm run dev --workspace=who-picks-this-nose-client",
     "client:generate": "npm run generate --workspace=who-picks-this-nose-client",
     "client:lint:check": "npm run lint:check --workspace=who-picks-this-nose-client",
