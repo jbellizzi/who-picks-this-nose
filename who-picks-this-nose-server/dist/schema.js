@@ -6,6 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.typeDefs = void 0;
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
 exports.typeDefs = (0, graphql_tag_1.default) `
+  enum CacheControlScope {
+    PUBLIC
+    PRIVATE
+  }
+
+  directive @cacheControl(
+    maxAge: Int
+    scope: CacheControlScope
+    inheritMaxAge: Boolean
+  ) on FIELD_DEFINITION | OBJECT | INTERFACE | UNION
+
   "A person whose nose to pick"
   type Person {
     "Person's ID"
@@ -15,7 +26,7 @@ exports.typeDefs = (0, graphql_tag_1.default) `
   }
 
   "Image"
-  type PersonWithImage {
+  type PersonWithImage @cacheControl(maxAge: 240) {
     "Image ID"
     id: ID!
     "Name"

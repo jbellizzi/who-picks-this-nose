@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { GoogleAuthOptions } from "google-auth-library";
 
 export const PORT: number = parseInt(process.env.PORT || "4000");
 export const SHEET_ID: string = process.env.SHEET_ID || "";
@@ -13,3 +14,12 @@ export const CREDENTIAL_TOKEN_URI: string = process.env.CREDENTIAL_TOKEN_URI || 
 export const CREDENTIAL_AUTH_PROVIDER_X509_CERT_URL: string = process.env.CREDENTIAL_AUTH_PROVIDER_X509_CERT_URL || "";
 export const CREDENTIAL_CLIENT_X509_CERT_URL: string = process.env.CREDENTIAL_CLIENT_X509_CERT_URL || "";
 export const CREDENTIAL_UNIVERSE_DOMAIN: string = process.env.CREDENTIAL_UNIVERSE_DOMAIN || "";
+
+export const googleCredentials: GoogleAuthOptions["credentials"] = {
+  type: CREDENTIAL_TYPE,
+  project_id: CREDENTIAL_PROJECT_ID,
+  private_key: CREDENTIAL_PRIVATE_KEY,
+  client_email: CREDENTIAL_CLIENT_EMAIL,
+  client_id: CREDENTIAL_CLIENT_ID,
+  universe_domain: CREDENTIAL_UNIVERSE_DOMAIN,
+};

@@ -5,14 +5,9 @@ const config: CodegenConfig = {
   generates: {
     "./src/types.ts": {
       plugins: ["typescript", "typescript-resolvers"],
-      // config: {
-      //   contextType: "./context#DataSourceContext",
-      //   mappers: {
-      //     Track: "./models#TrackModel",
-      //     Author: "./models#AuthorModel",
-      //     Module: "./models#ModuleModel",
-      //   },
-      // },
+      config: {
+        contextType: "./context#DataSourceContext",
+      },
     },
   },
 };
