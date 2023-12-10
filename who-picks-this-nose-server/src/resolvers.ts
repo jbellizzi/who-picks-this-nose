@@ -2,14 +2,29 @@ import { google } from "googleapis";
 import { GraphQLError } from "graphql";
 import { v4 as uuid } from "uuid";
 
-import { SHEET_ID } from "./constants";
+import {
+  CREDENTIAL_CLIENT_EMAIL,
+  CREDENTIAL_CLIENT_ID,
+  CREDENTIAL_PRIVATE_KEY,
+  CREDENTIAL_PROJECT_ID,
+  CREDENTIAL_TYPE,
+  CREDENTIAL_UNIVERSE_DOMAIN,
+  SHEET_ID,
+} from "./constants";
 import { PersonWithImage, Resolvers } from "./types";
 
 const ERROR_CODE_DATA_NOT_SET = "DATA_NOT_SET";
 const ERROR_CODE_FILE_NOT_FOUND = "FILE_NOT_FOUND";
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: "credentials.json",
+  credentials: {
+    type: CREDENTIAL_TYPE,
+    project_id: CREDENTIAL_PROJECT_ID,
+    private_key: CREDENTIAL_PRIVATE_KEY,
+    client_email: CREDENTIAL_CLIENT_EMAIL,
+    client_id: CREDENTIAL_CLIENT_ID,
+    universe_domain: CREDENTIAL_UNIVERSE_DOMAIN,
+  },
   scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"],
 });
 const sheets = google.sheets({ version: "v4", auth });

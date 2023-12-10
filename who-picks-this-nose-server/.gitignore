@@ -1,2 +1,4 @@
 src/types.ts
 credentials.json
+
+!dist
