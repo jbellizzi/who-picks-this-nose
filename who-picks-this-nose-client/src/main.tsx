@@ -6,7 +6,10 @@ import App from "./App.tsx";
 import { SERVER_URI } from "./constants";
 import "./index.css";
 
-const client = new ApolloClient({ uri: SERVER_URI, cache: new InMemoryCache() });
+const client = new ApolloClient({
+  uri: "https://who-picks-this-nose-production.up.railway.app/",
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
